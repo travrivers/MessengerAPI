@@ -5,6 +5,7 @@ Thanks for reviewing my homework! It's been built with FastAPI and RethinkDB. Fa
 ## Getting Started
 
 - Clone the project
+- Install [RethinkDB](https://rethinkdb.com/docs/install)
 - In terminal, run `pipenv install` to install dependencies into Python virtual environment
 - In a new terminal, run `rethinkdb` to start up RethinkDB
 - Back in the 1st terminal, run `pipenv shell` to start virtual environment
