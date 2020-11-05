@@ -10,7 +10,7 @@ r.connect("localhost", 28015).repl()
 def get_data(query: MessageQuery = None):
     data = []
 
-    if query.sender_id == None and query.recepient_id == None:
+    if query.sender_id == None and query.recipient_id == None:
         cursor = (
             r.table("messages")
             .filter(r.now() - r.row["date"] < (60 * 60 * 24 * 30))
@@ -20,12 +20,12 @@ def get_data(query: MessageQuery = None):
             data.append(message)
         return data[:100]
 
-    if query.sender_id and query.recepient_id:
+    if query.sender_id and query.recipient_id:
         cursor = (
             r.table("messages")
             .filter(
                 (r.row["sender_id"] == query.sender_id)
-                & (r.row["recepient_id"] == query.recepient_id)
+                & (r.row["recipient_id"] == query.recipient_id)
                 & (r.now() - r.row["date"] < (60 * 60 * 24 * 30))
             )
             .run()
@@ -49,11 +49,11 @@ def get_data(query: MessageQuery = None):
             data.append(message)
         return data[:100]
 
-    if query.recepient_id:
+    if query.recipient_id:
         cursor = (
             r.table("messages")
             .filter(
-                (r.row["recepient_id"] == query.recepient_id)
+                (r.row["recipient_id"] == query.recipient_id)
                 & (r.now() - r.row["date"] < (60 * 60 * 24 * 30))
             )
             .run()

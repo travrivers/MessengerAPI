@@ -5,7 +5,7 @@ from pydantic import BaseModel, validator
 
 class MessageQuery(BaseModel):
     sender_id: int = None
-    recepient_id: int = None
+    recipient_id: int = None
 
     @validator("sender_id")
     def validate_sender_id(cls, sender_id) -> int:
@@ -14,9 +14,9 @@ class MessageQuery(BaseModel):
                 raise ValueError("Must be Int")
         return sender_id
 
-    @validator("recepient_id")
-    def validate_recepient_id(cls, recepient_id) -> int:
-        if recepient_id:
-            if not isinstance(recepient_id, int):
+    @validator("recipient_id")
+    def validate_recipient_id(cls, recipient_id) -> int:
+        if recipient_id:
+            if not isinstance(recipient_id, int):
                 raise ValueError("Bad value type, must be Int")
-        return recepient_id
+        return recipient_id

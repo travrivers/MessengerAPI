@@ -12,14 +12,14 @@ from db.message_db import get_data, post_data
 app = FastAPI(docs_url="/docs", root_path="/")
 
 # Parses query parameters from get_messages into MessageQuery object
-def get_message_query(sender_id: int = None, recepient_id: int = None) -> MessageQuery:
-    query = MessageQuery(sender_id=sender_id, recepient_id=recepient_id)
+def get_message_query(sender_id: int = None, recipient_id: int = None) -> MessageQuery:
+    query = MessageQuery(sender_id=sender_id, recipient_id=recipient_id)
     return query
 
 
 # Parses message paremeters from post_message into Message object
-def get_message(sender_id: int, recepient_id: int, message: str) -> Message:
-    message = Message(sender_id=sender_id, recepient_id=recepient_id, message=message,)
+def get_message(sender_id: int, recipient_id: int, message: str) -> Message:
+    message = Message(sender_id=sender_id, recipient_id=recipient_id, message=message,)
     return message
 
 
