@@ -1,11 +1,11 @@
-from typing import List
 from datetime import datetime
+from typing import List
 
 from fastapi import FastAPI, Request, Response, Depends
 from starlette.responses import RedirectResponse, Response
 
-from .Message import Message
-from .MessageQuery import MessageQuery
+from api.Message import Message
+from api.MessageQuery import MessageQuery
 from db.message_db import get_data, post_data
 
 

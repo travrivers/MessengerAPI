@@ -13,6 +13,7 @@ def create_db():
     r.db("test").table_create("messages").run()
     for message in MESSAGES:
         r.table("messages").insert(dict(message)).run()
+    print('*Hooray, database created*')
 
 
 create_db()
