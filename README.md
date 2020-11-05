@@ -5,12 +5,8 @@ Thanks for reviewing my homework! It's been built with FastAPI and RethinkDB. Fa
 ## Getting Started
 
 - Clone the project
-- Install [RethinkDB](https://rethinkdb.com/docs/install)
-  - On Mac, run `brew update && brew install rethinkdb` in the terminal
-- Run `pipenv install` to install dependencies into Python virtual environment
-- In a new terminal, run `rethinkdb` to start up RethinkDB
-- Back in the first terminal, run `pipenv run python create_db.py` to get database and running with seeded data
-- Back in the 1st terminal, run `pipenv shell` to start virtual environment
-- Start the server with `uvicorn api.app:app`
-- Navigate to http://127.0.0.1:8000, the docs for the API will allow you to test it
+- Run Docker ([Install](https://docs.docker.com/get-docker/) if needed)
+- In terminal, run `docker-compose up --build`
+- When that completes, in a new terminal, run `docker exec -it messengerapi_fastapi_1 python create_db.py`, it will notify you that the database has been created
+- Navigate your broswer to http://:0.0.0.0
 - Enjoy! :)

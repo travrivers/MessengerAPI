@@ -4,8 +4,8 @@ from typing import List
 from fastapi import FastAPI, Request, Response, Depends
 from starlette.responses import RedirectResponse, Response
 
-from api.Message import Message
-from api.MessageQuery import MessageQuery
+from app.Message import Message
+from app.MessageQuery import MessageQuery
 from db.message_db import get_data, post_data
 
 

@@ -1,10 +1,10 @@
 from rethinkdb import RethinkDB
 
-from api.Message import Message
-from api.MessageQuery import MessageQuery
+from app.Message import Message
+from app.MessageQuery import MessageQuery
 
 r = RethinkDB()
-r.connect("localhost", 28015).repl()
+r.connect("database", 28015).repl()
 
 
 def get_data(query: MessageQuery = None):
@@ -33,7 +33,9 @@ def get_data(query: MessageQuery = None):
 
         for message in cursor:
             data.append(message)
-        return data[:100]
+        data = data[:100]
+        data.sort(key=lambda x: x["date"])
+        return data
 
     if query.sender_id:
         cursor = (
@@ -47,7 +49,9 @@ def get_data(query: MessageQuery = None):
 
         for message in cursor:
             data.append(message)
-        return data[:100]
+        data = data[:100]
+        data.sort(key=lambda x: x["date"])
+        return data
 
     if query.recipient_id:
         cursor = (
@@ -61,8 +65,12 @@ def get_data(query: MessageQuery = None):
 
         for message in cursor:
             data.append(message)
-        return data[:100]
+        data = data[:100]
+        data.sort(key=lambda x: x["date"])
+        return data
 
 
 def post_data(message: Message):
-    return r.table("messages").insert(dict(message)).run()
+    r.table("messages").insert(dict(message)).run()
+
+    return {"status": "Message Sent", "message": dict(message)}
